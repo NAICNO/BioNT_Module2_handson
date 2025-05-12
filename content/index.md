@@ -32,7 +32,7 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 ```
 
 ```{toctree}
-:caption: Hands-on sessions: Jupyter Notebooks 
+:caption: Jupyter Notebooks 
 :maxdepth: 1
 
 1.Notebook_PCA_n_Clustering.ipynb
