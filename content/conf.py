@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
-copyright = "2020, The contributors"
+project = "Applied ML for Biological Data - Hands-on sessions"
+copyright = "2025 Norwegian Ai Cloud"
 author = "The contributors"
 github_user = "coderefinery"
 github_repo_name = ""  # auto-detected from dirname if blank
@@ -36,6 +36,7 @@ extensions = [
     "sphinx_lesson",
     # remove once sphinx_rtd_theme updated for contrast and accessibility:
     "sphinx_rtd_theme_ext_color_contrast",
+    "sphinxcontrib.mermaid",
 ]
 
 # Settings for myst_nb:

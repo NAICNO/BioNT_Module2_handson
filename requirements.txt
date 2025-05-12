@@ -3,3 +3,28 @@ sphinx_rtd_theme>=2.0
 sphinx_rtd_theme_ext_color_contrast
 myst_nb
 sphinx-lesson
+sphinxcontrib.mermaid
+
+# Core data science packages
+numpy
+pandas
+matplotlib
+seaborn
+
+# Machine learning packages
+scikit-learn
+
+# Visualization extras
+plotly
+kaleido  # For static image export with plotly
+
+# Stats and utility packages
+scipy
+statsmodels
+
+# Jupyter environment (optional)
+jupyter
+ipykernel
+
+# For interactive 3D visualizations (optional)
+ipywidgets
