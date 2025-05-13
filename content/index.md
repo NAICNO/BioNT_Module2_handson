@@ -38,6 +38,7 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 
 1.Notebook_PCA_n_Clustering.ipynb
 2.Notebook_Logistic_regression.ipynb
+3.Notebook_ML_workflow.ipynb
 ```
 
 ```{toctree}
