@@ -25,10 +25,11 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 ```
 
 ```{toctree}
-:caption: Hands-on sessions: Descriptions 
+:caption: Sessions descriptions 
 :maxdepth: 1
 
 1.PCA_n_Clustering.md
+2.Logistic_regression.md
 ```
 
 ```{toctree}
@@ -36,8 +37,8 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 :maxdepth: 1
 
 1.Notebook_PCA_n_Clustering.ipynb
+2.Notebook_Logistic_regression.ipynb
 ```
-
 
 ```{toctree}
 :caption: Reference
