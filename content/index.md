@@ -30,6 +30,7 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 
 1.PCA_n_Clustering.md
 2.Logistic_regression.md
+3.ML_workflow.md
 ```
 
 ```{toctree}
