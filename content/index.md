@@ -10,7 +10,6 @@
 
 ## About the hands-on sessions
 
-
 ## Overall schedule
 
 ```{csv-table}
@@ -48,3 +47,7 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 
 quick-reference
 ```
+
+## Python dependencies
+
+* [Download requirements file `requirements.txt`](test_data/requirements.txt)
