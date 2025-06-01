@@ -12,34 +12,28 @@
 
 ## Overall schedule
 
-```{csv-table}
-:delim: ;
-:widths: auto
-
-PCA and clustering in cancer genomics ; 60 minutes
-Logistic regression in cancer genomics ; 60 minutes
-ML workflow with biological data ; 120 minutes
-Deep-learning-based variant calling via DeepVariant; 90 minutes
-Accelerated Genomics workflows with Parabricks; 100 minutes
-```
+* PCA and clustering in cancer genomics
+* Logistic regression in cancer genomics
+* ML workflow with biological data
+* Deep-learning-based variant calling via DeepVariant
+* Accelerated Genomics workflows with Parabricks
 
 ```{toctree}
 :caption: Sessions descriptions 
 :maxdepth: 1
 
 1.PCA_n_Clustering.md
-1.Notebook_PCA_n_Clustering.ipynb
 2.Logistic_regression.md
-2.Notebook_Logistic_regression.ipynb
 3.ML_workflow.md
-3.Notebook_ML_workflow.ipynb
 ```
 
 ```{toctree}
-:caption: Reference
+:caption: Jupyter Notebooks
 :maxdepth: 1
 
-quick-reference
+1.Notebook_PCA_n_Clustering_session.ipynb
+2.Notebook_Logistic_regression.ipynb
+3.Notebook_ML_workflow.ipynb
 ```
 
 ## Python dependencies
