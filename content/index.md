@@ -16,10 +16,10 @@
 :delim: ;
 :widths: auto
 
-PCA and clustering in cancer genomics ; 100 minutes
+PCA and clustering in cancer genomics ; 60 minutes
 Logistic regression in cancer genomics ; 60 minutes
-ML workflow with biological data ; 100 minutes
-Deep-learning-based variant calling via DeepVariant; 70 minutes
+ML workflow with biological data ; 120 minutes
+Deep-learning-based variant calling via DeepVariant; 90 minutes
 Accelerated Genomics workflows with Parabricks; 100 minutes
 ```
 
@@ -28,16 +28,10 @@ Accelerated Genomics workflows with Parabricks; 100 minutes
 :maxdepth: 1
 
 1.PCA_n_Clustering.md
-2.Logistic_regression.md
-3.ML_workflow.md
-```
-
-```{toctree}
-:caption: Jupyter Notebooks 
-:maxdepth: 1
-
 1.Notebook_PCA_n_Clustering.ipynb
+2.Logistic_regression.md
 2.Notebook_Logistic_regression.ipynb
+3.ML_workflow.md
 3.Notebook_ML_workflow.ipynb
 ```
 
