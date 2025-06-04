@@ -25,6 +25,7 @@
 1.PCA_n_Clustering.md
 2.Logistic_regression.md
 3.ML_workflow.md
+4.DeepVariant.md
 ```
 
 ```{toctree}
