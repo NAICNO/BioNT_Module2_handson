@@ -1,0 +1,58 @@
+# Unsupervised Learning
+
+## Principal component analysis (PCA) and K-means clustering
+
+:::{prereq}
+
+* BioNT Applied Machine Learning for Biological Data
+  * Module 1: Python Numpy and Pandas
+  * Module 2: Unsupervised Learning: Clustering (K-Means Clustering, Hierarchical clustering, Clustering evaluation metrics)
+
+*Participants should gain skills introduced in above mentioned Lessons or equivalent skills.*
+
+:::
+
+:::{exercise} Time
+1 hours and 30 minutes
+:::
+
+:::{objectives}
+
+## Objectives
+
+* Demonstrate the use of unsupervised learning for drug sensitivity analysis.
+* Example workflow of PCA and K-means clustering with test dataset (drug sensitivity patterns across patients) for patient stratification
+:::
+
+## Dataset
+
+* Imputed Drug Sensitivities:
+  * This data was imputed for TCGA-BRCA patients based on a model trained on cancer cell line gene expression and corresponding in vitro drug response measurements
+* Source: [Cancer drug sensitivity prediction from routine histology images](https://www.nature.com/articles/s41698-023-00491-9)
+
+*[download test dataset](test_data/pca_clustering/BRCA_Drug_sensitivity_test_data.csv)*
+
+## Workflow
+
+1. Exploratory Data Analysis
+   * Calculate basic statistics (mean, median, variance)
+   * Visualize data distributions
+   * Create correlation heatmap
+
+2. PCA Implementation
+   * Determine appropriate number of components
+   * Apply PCA transformation
+   * Calculate explained variance ratios
+   * Generate scree plot
+
+3. Visualization of PCA Results
+   * Create biplot of first two principal components
+   * Plot samples in PC space
+   * Generate loadings plot
+
+4. Interpretation and Analysis
+   * Analyze principal component loadings
+   * Identify drug contributions to each PC
+
+5. Cluster patients in PC space
+   * Correlate PC scores with metadata

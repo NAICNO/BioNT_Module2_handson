@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepVariant: Deep-learning tool &mdash; Applied ML for Biological Data - Hands-on sessions  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Unsupervised Learning" href="../1.Notebook_PCA_n_Clustering_session/" />
+    <link rel="prev" title="Complete Machine Learning Workflow" href="../3.ML_workflow/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Applied ML for Biological Data - Hands-on sessions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sessions descriptions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_Clustering/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow/">Complete Machine Learning Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DeepVariant: Deep-learning tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#variant-calling">Variant calling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing-steps-for-variant-calling">Data preprocessing steps for variant calling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-input-for-variant-calling">Main input for variant calling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-variant-calling-tools">Standard variant calling tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deep-learning-based-variant-caller-deepvariant">Deep learning based variant caller - DeepVariant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deepvariant-vs-traditional-variant-callers">DeepVariant vs traditional variant callers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deepvariant-model-training-and-evaluation">DeepVariant model training and evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.Notebook_PCA_n_Clustering_session/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Notebook_Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.Notebook_ML_workflow/">Complete ML workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Q &amp; A sessions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_clustering_QnA/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression_QnA/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow_QnA/">Complete Machine Learning Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Applied ML for Biological Data - Hands-on sessions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DeepVariant: Deep-learning tool</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/4.DeepVariant.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deepvariant-deep-learning-tool">
+<h1>DeepVariant: Deep-learning tool<a class="headerlink" href="#deepvariant-deep-learning-tool" title="Link to this heading"></a></h1>
+<div class="admonition-time exercise important admonition" id="exercise-0">
+<p class="admonition-title">Time</p>
+<ul class="simple">
+<li><p>Lecture: 20 minutes</p></li>
+<li><p>Exercise: 10 mins</p></li>
+<li><p>hands-on: 30 mins</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>We will introduce two such tools used in variant calling and functional effect prediction</p>
+<ul>
+<li><p>DeepVariant: Live session</p></li>
+<li><p>AlphaMissense (Additional notes, not intended to cover in live session)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="variant-calling">
+<h2>Variant calling<a class="headerlink" href="#variant-calling" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Variant calling is the process of identifying of variants from sequence data</p>
+<ul>
+<li><p>Compare the sequence data from an individual to a reference genome to identify differences</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../_images/image-2.png" /></p>
+<p><a class="reference external" href="https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genomic-variation"><em>Source</em></a></p>
+<section id="data-preprocessing-steps-for-variant-calling">
+<h3>Data preprocessing steps for variant calling<a class="headerlink" href="#data-preprocessing-steps-for-variant-calling" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Will be discussed in detail on Day-5 sessions</p></li>
+</ul>
+</section>
+<section id="main-input-for-variant-calling">
+<h3>Main input for variant calling<a class="headerlink" href="#main-input-for-variant-calling" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Alignment file used can be think of as a dataset representing sequence reads that are aligned to a reference genome - i.e., sequence reads are pileup along the reference genome</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-3.png" /></p>
+<p><a class="reference external" href="https://campuspress.yale.edu/knightlab/ruddle/plotreads/"><em>Source</em></a></p>
+</section>
+</section>
+<section id="standard-variant-calling-tools">
+<h2>Standard variant calling tools<a class="headerlink" href="#standard-variant-calling-tools" title="Link to this heading"></a></h2>
+<p>Standard variant calling tools are based on statistical models and various QC parameters</p>
+<ul class="simple">
+<li><p>These tools first analyze alignment files to detect read-positions that differ from reference</p></li>
+<li><p>Apply statistical methods combining various information (nucleotide and QC parameters) of these read-positions to identify genomic variants</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-4.png" /></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run Haplotype Caller</span>
+$<span class="w"> </span>gatk<span class="w"> </span>HaplotypeCaller<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--java-options<span class="w"> </span>-Xmx30g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input<span class="w"> </span><span class="si">${</span><span class="nv">INPUT_BAM</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span><span class="si">${</span><span class="nv">OUT_VCF</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--reference<span class="w"> </span><span class="si">${</span><span class="nv">REFERENCE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--native-pair-hmm-threads<span class="w"> </span><span class="si">${</span><span class="nv">CPU</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="deep-learning-based-variant-caller-deepvariant">
+<h2>Deep learning based variant caller - DeepVariant<a class="headerlink" href="#deep-learning-based-variant-caller-deepvariant" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Various visualization techniques have been used to validate regions of alignment files with variants (e.g., Pileup-images)</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-5.png" /></p>
+<ul class="simple">
+<li><p>DeepVariant leverages this concept of pileup-images to visualize not only the bases, but other features that are important for variant calling</p>
+<ul>
+<li><p>DeepVariant generates sets of images for candidate variant positions representing range of features</p></li>
+<li><p>Stack of pileup images each representing</p>
+<ul>
+<li><p>Base calling quality</p></li>
+<li><p>Mapping quality</p></li>
+<li><p>Metadata on where position is reference or not</p></li>
+<li><p>etc…</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Availability of these images transform variant calling a image classification problem</p></li>
+<li><p>DeepVariant use deep-learning model to classify these images and predict variants with high precision</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-6.png" /></p>
+</section>
+<section id="deepvariant-vs-traditional-variant-callers">
+<h2>DeepVariant vs traditional variant callers<a class="headerlink" href="#deepvariant-vs-traditional-variant-callers" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>DeepVariant showed higher Precision and sensitivity scores compared traditional callers (Ref: <a class="reference external" href="https://www.nature.com/articles/nbt.4235">Original DeepVariant</a> paper and <a class="reference external" href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-022-08365-3/tables/3">Independent studies</a>)</p></li>
+</ul>
+<div class="admonition-precision-vs-recall-plot solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Precision vs Recall plot</p>
+<p><img alt="alt text" src="../_images/image-10.png" /></p>
+</div>
+<ul class="simple">
+<li><p>High accuracy of DeepVariant compared to traditional callers:</p>
+<ul>
+<li><p>DeepVariant won 2020 PrecisionFDA Truth Challenge V2 for all Benchmark Regions across Multiple sequencing Technologies</p></li>
+<li><p>DeepVariant - best SNP Performance in 2016 PrecisionFDA Truth Challenge</p></li>
+<li><p>DeepVariant makes a great difference especially for low coverage samples</p></li>
+<li><p><a class="reference external" href="https://github.com/google/deepvariant">References are linked in DeepVariant GitHub repo</a></p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition-exercise exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise</p>
+<ul class="simple">
+<li><p>Why DeepVariants (deep-learning based) could outperform traditional variant callers?</p></li>
+</ul>
+</div>
+<section id="deepvariant-model-training-and-evaluation">
+<h3>DeepVariant model training and evaluation<a class="headerlink" href="#deepvariant-model-training-and-evaluation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>This training dataset consist of 100s of millions of samples from multiple genomes, sequencers, and preparation methods</p></li>
+<li><p>This help minimize the bias in the model towards a specific sequencing platform or technology</p></li>
+</ul>
+<div class="admonition-deepvariant-training-data solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">DeepVariant training data</p>
+<p><img alt="alt text" src="../_images/image-11.png" />
+<a class="reference external" href="https://github.com/google/deepvariant/blob/r1.9/docs/deepvariant-details-training-data.md">Ref: DeepVariant training data</a></p>
+</div>
+<ul class="simple">
+<li><p>Model is evaluated using unseen data from [precisionFDA Truth Challenge](https://precision.fda.gov/challenges/truth/results</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="rubric" id="hands-on-deepvariant-run">Hands-on: DeepVariant run</p>
+<ul class="simple">
+<li><p>Log into VM following instructions given in previous session</p></li>
+</ul>
+<div class="admonition-run-inside-the-vm instructor-note admonition" id="instructor-note-1">
+<p class="admonition-title">Run inside the VM</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Move to home directory</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+
+<span class="c1"># Check your current working directory (you&#39;ll see e.g., /home/biont*)</span>
+<span class="nb">pwd</span>
+
+<span class="c1"># Run docker interactive mode</span>
+docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+-it<span class="w"> </span><span class="se">\</span>
+--rm<span class="w"> </span><span class="se">\</span>
+--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/data:/data<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span><span class="nv">$PWD</span>:<span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
+-w<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\</span>
+nvcr.io/nvidia/clara/clara-parabricks:4.3.0-1<span class="w"> </span>bash
+</pre></div>
+</div>
+<div class="admonition-now-you-are-inside-the-docker-container instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Now you are inside the docker container</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set path variable (i.e, copy following lines)</span>
+
+<span class="nv">FASTA</span><span class="o">=</span><span class="s2">&quot;/data/ngs/ref/Homo_sapiens_assembly38.fasta&quot;</span>
+<span class="nv">KNOWN_SITES</span><span class="o">=</span><span class="s2">&quot;/data/ngs/ref/Homo_sapiens_assembly38.known_indels.vcf.gz&quot;</span>
+<span class="nv">BAM</span><span class="o">=</span>/data/ngs/BAM/dw_sample.bam
+
+<span class="c1"># Run DV command &amp; generate deepvariant.vcf output file (i.e, copy following lines)</span>
+pbrun<span class="w"> </span>deepvariant<span class="w"> </span>--ref<span class="w"> </span><span class="si">${</span><span class="nv">FASTA</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+--in-bam<span class="w"> </span><span class="si">${</span><span class="nv">BAM</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+--num-gpus<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+--logfile<span class="w"> </span>dv.log<span class="w"> </span><span class="se">\</span>
+--out-variants<span class="w"> </span>deepvariant.vcf
+
+<span class="c1">## You can exit the docker with `exit` command</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="docutils">
+</div>
+<ul class="simple">
+<li><p>Inspect the DeepVariant output <code class="docutils literal notranslate"><span class="pre">deepvariant.vcf</span></code></p></li>
+</ul>
+<div class="admonition-alphamissense instructor-note admonition" id="instructor-note-2">
+<p class="admonition-title">AlphaMissense</p>
+<details>
+<summary>AlphaMissense notes:</summary>
+<ul class="simple">
+<li><p>One of the main goals of variant calling is to evaluating the clinical significance of detected variants</p></li>
+<li><p>Can we use ML to evaluate the clinical significance of variants?</p></li>
+</ul>
+<p class="rubric" id="pathogenicity-prediction-predicting-damaging-effects-of-variants">Pathogenicity prediction (predicting damaging effects) of variants</p>
+<ul class="simple">
+<li><p>Pathogenicity prediction is the process of determining the clinical significance of a variant</p>
+<ul>
+<li><p>Pathogenic variants are those that cause a disease</p></li>
+<li><p>Benign variants are those that do not cause or are not associated with a disease</p></li>
+</ul>
+</li>
+<li><p>Current methods developed to reach above goal rely on combining following two fields</p>
+<ul>
+<li><p>knowledge of genetics and the biological processes - evolutionary conservation, protein structure, etc</p></li>
+<li><p>statistical methods</p></li>
+</ul>
+</li>
+<li><p>For instance, variants that are</p></li>
+<li><p>common in the population are less likely to have damaging effects (benign)</p></li>
+<li><p>rare and run in families with disease are more likely to be pathogenic</p></li>
+<li><p>highly conserved across species are more likely to be pathogenic</p></li>
+<li><p>affecting (altering) the structure of proteins critical for cellular functions are more likely to be pathogenic</p></li>
+</ul>
+<p class="rubric" id="main-challenge">Main challenge</p>
+<ul class="simple">
+<li><p>Over the years, scientists have identified a long list of disease associated genes</p></li>
+<li><p>A large number of variants in these genes alters the protein sequence (amino acid sequence), but exact impact of on the protein structure is still unknown. Thus, association with the disease is also unknown</p>
+<ul>
+<li><p>Such variants are known variants with uncertain significance</p></li>
+<li><p>According to a recent study a <strong>large majority of such variants (that alter protein sequence - missense) are with uncertain significance</strong> - <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7334197">source</a></p></li>
+<li><p>Differentiating pathogenic and bening such variants is a challenging task</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric" id="deep-learning-based-solution-alphamissense">Deep-learning based solution - AlphaMissense</p>
+<ul class="simple">
+<li><p>Deep-learning model predicting the (missense) variant pathogenicity</p></li>
+<li><p>Ref: https://www.science.org/doi/10.1126/science.adg7492</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-7.png" />
+<code class="docutils literal notranslate"><span class="pre">Source:</span> <span class="pre">&lt;https://www.science.org/doi/10.1126/science.adg7492&gt;</span></code>__</p>
+<p><strong>Main steps</strong>:</p>
+<ol class="arabic">
+<li><p>Collecting and processing a large dataset of missense variants along with annotations indicating their pathogenicity (disease-causing or benign)</p></li>
+<li><p>Convert variant info and amino acid sequences into representations suitable for deep learning models</p>
+<ul class="simple">
+<li><p>Transform raw data into new features that can better represent the underlying patterns and relationships</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-8.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Source:</span> <span class="pre">&lt;https://www.science.org/doi/10.1126/science.adg7492&gt;</span></code>__</p>
+</li>
+<li><p>Fine-tune AlphaFold deep-learning model that predicts protein structure to predict variant pathogenicity</p></li>
+<li><p>Assess the accuracy and generalizability of variant pathogenicity prediction using independent datasets</p></li>
+</ol>
+<p class="rubric" id="alphamissense-model-training">AlphaMissense model training</p>
+<ul class="simple">
+<li><p>Training data:</p>
+<ul>
+<li><p>Bening: missense variants frequently observed in human and primate populations</p></li>
+<li><p>Pathogenic: missense variants absent from human and primate populations</p></li>
+</ul>
+</li>
+<li><p>Validation data:</p>
+<ul>
+<li><p>Tune model parameters</p></li>
+<li><p>Held-out data</p>
+<ul>
+<li><p>Pathogenic missense variants in various databases</p></li>
+<li><p>Bening variants from population-databases</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Test data:</p>
+<ul>
+<li><p>Evaluate the model’s performance on unseen data</p></li>
+<li><p>Held-out data</p></li>
+<li><p>Pathogenic missense variants in ClinVar</p></li>
+<li><p>Bening variants from population-databases</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric" id="model-evaluation">Model evaluation</p>
+<ul class="simple">
+<li><p>Model evaluation ensures that the model’s performance is not biased by the training data and that it can generalize to new and unseen variants</p></li>
+<li><p>Predict the pathogenicity of each variant in the independent dataset (variants not included in the training dataset)</p></li>
+<li><p>AlphaMissense model is evaluated using multiple clinical benchmark datasets</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ClinVar</span></code> test set,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">De</span> <span class="pre">novo</span> <span class="pre">variants</span></code> from rare disease patients,</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt text" src="../_images/image-9.png" />
+<code class="docutils literal notranslate"><span class="pre">Source:</span> <span class="pre">&lt;https://www.science.org/doi/10.1126/science.adg7492&gt;</span></code>__</p>
+<p class="rubric" id="applications">Applications</p>
+<ul class="simple">
+<li><p>AlphaMissense findings coupled with downstream functional experiments improve the current understanding of clinically actionable genes and variants</p></li>
+<li><p>Improve the diagnostic yield of rare genetic diseases</p></li>
+</ul>
+</details>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../3.ML_workflow/" class="btn btn-neutral float-left" title="Complete Machine Learning Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../1.Notebook_PCA_n_Clustering_session/" class="btn btn-neutral float-right" title="Unsupervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Norwegian Ai Cloud.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

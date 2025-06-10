@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Machine Learning Workflow &mdash; Applied ML for Biological Data - Hands-on sessions  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Classification" href="../2.Logistic_regression_QnA/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Applied ML for Biological Data - Hands-on sessions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sessions descriptions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_Clustering/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow/">Complete Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.DeepVariant/">DeepVariant: Deep-learning tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.Notebook_PCA_n_Clustering_session/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Notebook_Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.Notebook_ML_workflow/">Complete ML workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Q &amp; A sessions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_clustering_QnA/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression_QnA/">Classification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Complete Machine Learning Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#machine-learning-workflow">Machine Learning Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-exploration">Data exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-data-handling">Missing data handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train-test-and-standerdisation">Train-test and Standerdisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#corss-validation">Corss-validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#corss-validation-code">Corss-validation: Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Applied ML for Biological Data - Hands-on sessions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Complete Machine Learning Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/3.ML_workflow_QnA.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="complete-machine-learning-workflow">
+<h1>Complete Machine Learning Workflow<a class="headerlink" href="#complete-machine-learning-workflow" title="Link to this heading"></a></h1>
+<section id="machine-learning-workflow">
+<h2>Machine Learning Workflow<a class="headerlink" href="#machine-learning-workflow" title="Link to this heading"></a></h2>
+<div class="admonition-instructor-note instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Instructor note</p>
+<ul class="simple">
+<li><p>Participants were given 60 minutes to</p>
+<ul>
+<li><p>go through the Jupter notebook and</p></li>
+<li><p>select correct answers for the questions</p></li>
+</ul>
+</li>
+<li><p>Instructor narrate the answers and reasoning after the self-study time</p>
+<ul>
+<li><p>time: 45 minutes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="data-exploration">
+<h3>Data exploration<a class="headerlink" href="#data-exploration" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>When dealing with gene mutation features where &gt;95% of samples are wild-type (0), what is the most important consideration?</p>
+<ul class="simple">
+<li><p>A) Apply standard scaling (z-score normalization) to make features comparable</p></li>
+<li><p>B) Use log transformation to reduce skewness in the distribution</p></li>
+<li><p>C) Consider the impact on model training - rare events may be difficult to learn</p></li>
+<li><p>D) Convert to categorical variables using one-hot encoding</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Your dataset contains age (continuous, 20-80 range), gender (binary 0/1), and gene mutations (binary 0/1). What normalization strategy is most appropriate?</p>
+<ul class="simple">
+<li><p>A) Apply Min-Max scaling to all features to get 0-1 range</p></li>
+<li><p>B) Apply Z-score normalization to all features for zero mean, unit variance</p></li>
+<li><p>C) Scale only the continuous features (age), leave binary features unchanged</p></li>
+<li><p>D) Apply log transformation to all features to handle skewness</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>Why is feature scaling for <code class="docutils literal notranslate"><span class="pre">Age_at_diagnosis</span></code> is required?</p>
+<ul class="simple">
+<li><p>A) To convert the <code class="docutils literal notranslate"><span class="pre">Age_at_diagnosis</span></code> distribution into a perfect Gaussian (normal) distribution.</p></li>
+<li><p>B) To reduce the number of unique values in <code class="docutils literal notranslate"><span class="pre">Age_at_diagnosis</span></code>, thereby simplifying the model.</p></li>
+<li><p>C) To ensure that <code class="docutils literal notranslate"><span class="pre">Age_at_diagnosis</span></code> values are transformed to be either 0 or 1, matching the gene features.</p></li>
+<li><p>D) To prevent <code class="docutils literal notranslate"><span class="pre">Age_at_diagnosis</span></code> from disproportionately influencing the model’s parameter estimation due to its larger numerical range compared to the binary (0/1) features.</p></li>
+</ul>
+<p><strong>Question 4:</strong></p>
+<p>In this glioma classification dataset, what should be your primary concern regarding the rare gene mutations?</p>
+<ul class="simple">
+<li><p>A) The computational cost will be too high with so many zero values</p></li>
+<li><p>B) Rare mutations might be the most clinically important but hardest to detect</p></li>
+<li><p>C) Binary features don’t need any preprocessing in machine learning</p></li>
+<li><p>D) The dataset is too small and needs data augmentation</p></li>
+</ul>
+<p><strong>Question 5:</strong></p>
+<p>You’re analyzing a dataset with 10,000 patients where a particular gene mutation occurs in only 50 patients (0.5% prevalence). When should you be most concerned about this feature imbalance?</p>
+<ul class="simple">
+<li><p>A) Always - any feature with &lt;5% prevalence will bias the logistic regression model</p></li>
+<li><p>B) Never - logistic regression inherently handles sparse features well</p></li>
+<li><p>C) Only when the 50 mutation carriers don’t provide sufficient statistical power to reliably estimate the gene’s effect</p></li>
+<li><p>D) Only when the mutation is randomly distributed and not associated with the outcome</p></li>
+</ul>
+<p><strong>Question 6:</strong></p>
+<p>In disease genomics, why might completely removing very rare genetic variants (occurring in &lt;1% of
+samples) be problematic from a biological perspective?</p>
+<ul class="simple">
+<li><p>A) Rare variants always have larger effect sizes than common variants</p></li>
+<li><p>B) Some rare variants may be clinically actionable, even if statistically underpowered in current sample</p></li>
+<li><p>C) Removing sparse features will always improve model generalization</p></li>
+<li><p>D) Feature selection should only be based on statistical criteria, not biological knowledge</p></li>
+</ul>
+</div>
+</section>
+<section id="missing-data-handling">
+<h3>Missing data handling<a class="headerlink" href="#missing-data-handling" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-1">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>Your target variable (Grade) has missing values in 0.119% of samples. What is the most appropriate approach?</p>
+<ul class="simple">
+<li><p>A) Impute the missing grades using the mode (most frequent class)</p></li>
+<li><p>B) Use a sophisticated imputation method like KNN to predict missing grades</p></li>
+<li><p>C) Remove these samples entirely from both training and testing datasets</p></li>
+<li><p>D) Replace missing grades with a third category “Unknown” and make it a 3-class problem</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.95</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">gliomas</span><span class="p">))</span>
+<span class="c1"># Keep columns with at least 95% non-missing values</span>
+<span class="n">gliomas</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A) This code drops columns that have more than 5% missing values using a 95% completeness threshold (Drop ATRX_xNA - 25% missing and IDH1_xNA - 80% missing, while
+Keeping All other features (0.119% or 0% missing)</p></li>
+<li><p>B) Only Drop IDH1_xNA</p></li>
+<li><p>C) Drop all columns with missing values</p></li>
+<li><p>D) Keep columns with 0% missing values</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>When should this column-dropping step be performed in your ML pipeline?</p>
+<ul class="simple">
+<li><p>A) Before removing samples (rows) with missing target variables</p></li>
+<li><p>B) After removing samples with missing target variables but before train/test split</p></li>
+<li><p>C) After train/test split but before feature scaling</p></li>
+<li><p>D) After model training to remove unimportant features</p></li>
+</ul>
+</div>
+</section>
+<section id="train-test-and-standerdisation">
+<h3>Train-test and Standerdisation<a class="headerlink" href="#train-test-and-standerdisation" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-2">
+<p class="admonition-title">Questions</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">gliomas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">gliomas</span><span class="p">[</span><span class="s2">&quot;Grade&quot;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">gliomas</span><span class="p">[</span><span class="s2">&quot;Grade&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span>
+<span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span>
+
+</pre></div>
+</div>
+<p><strong>Question 1:</strong></p>
+<p>Why do we use <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> on training data but only <code class="docutils literal notranslate"><span class="pre">transform()</span></code> on test data?</p>
+<ul class="simple">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> is faster than <code class="docutils literal notranslate"><span class="pre">transform()</span></code> for larger datasets</p></li>
+<li><p>B) To prevent data leakage by ensuring scaling parameters come only from training data</p></li>
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">transform()</span></code> automatically applies different scaling to test data for better performance</p></li>
+<li><p>D) It’s a coding convention but doesn’t impact model performance</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>What would happen if you calculated scaling parameters (mean and standard deviation) using the entire dataset before splitting?</p>
+<ul class="simple">
+<li><p>A) The model would perform better due to more stable scaling parameters</p></li>
+<li><p>B) It would create data leakage because test set statistics influence training preprocessing</p></li>
+<li><p>C) Nothing significant - the difference in scaling parameters would be minimal</p></li>
+<li><p>D) The model would be more generalizable to new data</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>If a new patient has age = 85 years (outside the training age range of 20-80), what should happen during prediction?</p>
+<ul class="simple">
+<li><p>A) Reject the prediction because the age is out of range</p></li>
+<li><p>B) Retrain the scaler including this new data point</p></li>
+<li><p>C) Apply the same training scaler transformation, even if it results in an extreme scaled value</p></li>
+<li><p>D) Use a different scaling method specifically for this outlier</p></li>
+</ul>
+<p><strong>Question 4:</strong></p>
+<p><img alt="alt text" src="../_images/image-23.png" /></p>
+<p>What is the most important reason for a machine learning practitioner to perform such a visual check after splitting the data?</p>
+<ul class="simple">
+<li><p>A) To ensure that no data points were lost during the train_test_split operation.</p></li>
+<li><p>B) To confirm that the Age_at_diagnosis feature has been transformed to a normal distribution in both sets.</p></li>
+<li><p>C) To verify that the feature distributions are reasonably similar between the training and test sets, which helps ensure that the test set provides a fair and representative evaluation of the model’s performance.</p></li>
+<li><p>D) To decide if the Age_at_diagnosis feature should be used as the target variable instead of “Grade”.</p></li>
+</ul>
+</div>
+</section>
+<section id="corss-validation">
+<h3>Corss-validation<a class="headerlink" href="#corss-validation" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-3">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>You split your dataset into 70% train/30% test, getting a test precison of 87% (recall 85%). What’s the main limitation of this single performance estimate?</p>
+<ul class="simple">
+<li><p>A) precison of 87% (recall 85%) is too low for medical applications</p></li>
+<li><p>B) The estimate could vary with different random splits of the same data</p></li>
+<li><p>C) 30% test size is too large and wastes training data</p></li>
+<li><p>D) precison and recall are the wrong metric for binary classification problems</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Say that Your single test set has 252 samples (30% of 840). If you want to evaluate model performance on rare glioma subtypes that represent 5% of cases, how many samples would you have?</p>
+<ul class="simple">
+<li><p>A) About 42 samples - sufficient for reliable performance estimation</p></li>
+<li><p>B) About 13 samples - too few for meaningful statistical conclusions</p></li>
+<li><p>C) About 126 samples - more than adequate for analysis</p></li>
+<li><p>D) The number doesn’t matter if the model is well-trained</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>A hospital wants to deploy your glioma classifier but asks: “How confident are you that this precison of 87% (recall 85%) will hold for our patient population?” With only a single holdout test, what’s your most honest answer?</p>
+<ul class="simple">
+<li><p>A) “Very confident - precison of 87% (recall 85%) are true values since we used proper train/test split”</p></li>
+<li><p>B) “Moderately confident - the precison and recall could realistically range from 80-94% based on this single test”</p></li>
+<li><p>C) “Cannot provide confidence bounds - need cross-validation or multiple test sets for reliability estimates”</p></li>
+<li><p>D) “Completely confident - precison and recall doesn’t vary between hospitals”</p></li>
+</ul>
+</div>
+</section>
+<section id="corss-validation-code">
+<h3>Corss-validation: Code<a class="headerlink" href="#corss-validation-code" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-4">
+<p class="admonition-title">Questions</p>
+<p><em><strong>Question 1:</strong></em></p>
+<p>(A)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1111</span><span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">gliomas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Initialize scaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">fold</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">lr_cv</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">val_index</span> <span class="ow">in</span> <span class="n">splits</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="c1"># Initialize the Logistic Regression model with cross-validation</span>
+
+    <span class="n">X_train_scaled</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">X_val_scaled</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_val</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    
+    <span class="c1"># Use the SCALED data for training and prediction</span>
+    <span class="n">lr_cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># ← Now using scaled data</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">lr_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_scale</span><span class="o">-</span> <span class="n">D</span><span class="p">)</span>  <span class="c1"># ← Now using scaled data</span>
+</pre></div>
+</div>
+<p>(B)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1111</span><span class="p">)</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">gliomas</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Initialize scaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">fold</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">val_index</span> <span class="ow">in</span> <span class="n">splits</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="c1"># Initialize the Logistic Regression model with cross-validation</span>
+    <span class="n">lr_cv</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+
+    <span class="n">X_train_scaled</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">X_val_scaled</span><span class="p">[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_val</span><span class="p">[[</span><span class="s1">&#39;Age_at_diagnosis&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="c1"># Use the SCALED data for training and prediction</span>
+    <span class="n">lr_cv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># ← Now using scaled data</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">lr_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val_scale</span><span class="o">-</span> <span class="n">D</span><span class="p">)</span>  <span class="c1"># ← Now using scaled data</span>
+</pre></div>
+</div>
+<p>In this A code-block, the same <code class="docutils literal notranslate"><span class="pre">lr_cv</span></code> object is used across all 5 folds. What potential issue could this create?</p>
+<ul class="simple">
+<li><p>A) Each fold builds upon the previous fold’s learned parameters, creating data leakage</p></li>
+<li><p>B) The model’s internal state gets reset automatically, so there’s no issue</p></li>
+<li><p>C) Memory usage increases exponentially with each fold</p></li>
+<li><p>D) The model converges faster in later folds due to better initialization</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>The code declares <code class="docutils literal notranslate"><span class="pre">scaler</span> <span class="pre">=</span> <span class="pre">StandardScaler()</span></code> before the loop and reuses it (above A &amp; B code-blocks). What happens when you call <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> on the same scaler object multiple times?</p>
+<ul class="simple">
+<li><p>A) It accumulates statistics across all folds, causing data leakage</p></li>
+<li><p>B) It overwrites previous statistics with new fold’s statistics - no leakage</p></li>
+<li><p>C) It averages statistics across folds for more stable scaling</p></li>
+<li><p>D) It causes an error because you can only fit once</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>This code uses KFold instead of StratifiedKFold. In a medical dataset where GBM (aggressive cancer) represents 40% of cases, what could go wrong?</p>
+<ul class="simple">
+<li><p>A) Some folds might have 60% GBM while others have 20%, creating inconsistent evaluation conditions</p></li>
+<li><p>B) The total number of samples evaluated will be different across folds</p></li>
+<li><p>C) Cross-validation will take significantly longer to complete</p></li>
+<li><p>D) The precision and recall calculations will become invalid</p></li>
+</ul>
+</div>
+</section>
+<section id="hyperparameter-tuning">
+<h3>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-5">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>You train a logistic regression model for glioma classification using default scikit-learn parameters and achieve 78% F1-score. After hyperparameter tuning with GridSearchCV, you achieve 85% F1-score. What does this improvement primarily demonstrate?</p>
+<ul class="simple">
+<li><p>A) Default parameters are intentionally set to poor values to encourage tuning</p></li>
+<li><p>B) Machine learning algorithms need parameter optimization to match specific dataset characteristics</p></li>
+<li><p>C) Hyperparameter tuning always guarantees at least 7% improvement in any metric</p></li>
+<li><p>D) The original 78% score was due to a coding error in the implementation</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># original grid in the notebook</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># For l2 penalty </span>
+    <span class="p">{</span>
+        <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l2&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="s1">&#39;liblinear&#39;</span><span class="p">,</span> <span class="s1">&#39;newton-cg&#39;</span><span class="p">,</span> <span class="s1">&#39;sag&#39;</span><span class="p">,</span> <span class="s1">&#39;saga&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">],</span>  <span class="c1"># Higher iterations for sparse data</span>
+        <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;balanced&#39;</span><span class="p">]</span>  <span class="c1"># Handle class imbalance if present</span>
+    <span class="p">},</span>
+    <span class="c1"># For l1 penalty (best for sparse features)</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Extended lower range</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;liblinear&#39;</span><span class="p">,</span> <span class="s1">&#39;saga&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">],</span>
+        <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;balanced&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="c1"># For elasticnet penalty</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;elasticnet&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;l1_ratio&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>  <span class="c1"># Finer granularity</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;saga&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Extended range</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">],</span>
+        <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;balanced&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Alternative: Focused grid for very sparse genomics data</span>
+<span class="n">sparse_focused_grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># Emphasize L1 and ElasticNet for feature selection</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># Focus on stronger regularization</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;liblinear&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5000</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;elasticnet&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;l1_ratio&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>  <span class="c1"># Favor L1 component</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;saga&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5000</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+</pre></div>
+</div>
+<p>The sparse_focused_grid excludes L2 regularization and only includes L1 and ElasticNet penalties. Why is this choice particularly effective for sparse genomics data?</p>
+<ul class="simple">
+<li><p>A) L2 regularization is computationally too expensive for high-dimensional sparse data</p></li>
+<li><p>B) L1 and ElasticNet can set coefficients to exactly zero, performing automatic feature selection on irrelevant sparse features (while addressing multicollinearity)</p></li>
+<li><p>C) L2 regularization requires balanced features and cannot handle any level of sparsity</p></li>
+<li><p>D) L1 and ElasticNet converge faster than L2 when most features are sparse</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../2.Logistic_regression_QnA/" class="btn btn-neutral float-left" title="Classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Norwegian Ai Cloud.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

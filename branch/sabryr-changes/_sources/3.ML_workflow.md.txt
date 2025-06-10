@@ -1,0 +1,52 @@
+# Complete Machine Learning Workflow
+
+## Machine Learning Workflow
+
+:::{prereq}
+
+* BioNT Applied Machine Learning for Biological Data
+  * Module 1: Python Numpy and Pandas
+  * Module 2: Classification: Logistic regression; Tree-based methods; Matrices for classification evaluation 
+
+*Participants should gain skills introduced in above mentioned Lessons or equivalent skills.*
+
+:::
+
+:::{exercise} Time
+2 hours
+:::
+
+## Objectives
+
+* Demonstrate the use of complete classification workflow for cancer dataset (expand on previous hands-on session)
+* Example workflow of Logistic regression with Glioma test dataset for Glioma sub-type classification
+:::
+
+## ML use-case
+
+* ML use-case as described in [Classification hands-on session](2.Logistic_regression.md)
+* Example Logistic regression workflow tries to use most frequently mutated 20 genes and 3 clinical features to classify/ grade gliomas
+* Demonstrate following key techniques
+  * Data exploration and handing missing data
+  * Scaling
+  * Cross-validation
+  * Hyper-parameter tuning with GridSearch
+:::
+
+## Dataset
+
+* [Download dataset: TCGA_InfoWithGrade_scaled.csv](test_data/logistic_reg/TCGA_InfoWithGrade.csv)
+
+
+* Dataset as described in [Classification hands-on session](2.Logistic_regression.md)
+  * Features:
+    * Most frequently mutated 20 genes and
+    * 3 clinical features: gender, age at diagnosis, race
+  * Target variable (i.e, dependant variable or response variables): Glioma grade class information
+    * 0 = “LGG”
+    * 1 = “GBM”
+* Several Additional columns and rows with null values are spiked into the original dataset for demonstration purpose
+
+### Source
+
+* [UCI Machine Learning Repository - Glioma Grading Clinical and Mutation Features](https://archive.ics.uci.edu/dataset/759/glioma+grading+clinical+and+mutation+features+dataset)

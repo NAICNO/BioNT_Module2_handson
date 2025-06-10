@@ -1,0 +1,57 @@
+# Classification
+
+## Logistic regression
+
+:::{prereq}
+
+* BioNT Applied Machine Learning for Biological Data
+  * Module 1: Python Numpy and Pandas
+
+*Participants should gain skills introduced in above mentioned Lessons or equivalent skills.*
+
+:::
+
+:::{exercise} Time
+1 hours
+:::
+
+:::{objectives}
+
+## Objectives
+
+* Demonstrate the use of classification for cancer dataset
+* Example Logistic regression analysis with Glioma test dataset for Glioma sub-type classification
+:::
+
+:::{note}
+
+## ML use-case
+
+* Gliomas - most common primary tumors of the brain
+* Glioma categories
+  * Low grade gliomas (LGG) - Slower growing gliomas
+  * Glioblastoma Multiforme (GBM) - Most aggressive gliomas type
+* Glioma classification (grading) depend on the histological/imaging criteria, but clinical and molecular/mutation factors are also very crucial for accurately diagnose glioma patients.
+* Logistic regression based analysis tries to use most frequently mutated 20 genes and 3 clinical features to classify/ grade gliomas
+:::
+
+## Dataset
+
+* [Download dataset: TCGA_InfoWithGrade_scaled.csv](test_data/logistic_reg/TCGA_InfoWithGrade_scaled.csv)
+
+* Features:
+  * Most frequently mutated 20 genes and
+  * 2 clinical features: gender and age at diagnosis
+* Target variable (i.e, dependant variable or response variables): Glioma grade class information
+  * 0 = “LGG”
+  * 1 = “GBM”
+
+### Source
+
+* [UCI Machine Learning Repository - Glioma Grading Clinical and Mutation Features](https://archive.ics.uci.edu/dataset/759/glioma+grading+clinical+and+mutation+features+dataset)
+
+## Notebook
+
+* [Download the notebook](https://github.com/NAICNO/BioNT_Module2_handson/blob/main/content/2.Notebook_Logistic_regression.ipynb)
+
+![alt text](image-1.png)

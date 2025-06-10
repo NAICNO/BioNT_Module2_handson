@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsupervised Learning &mdash; Applied ML for Biological Data - Hands-on sessions  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Classification" href="../2.Logistic_regression_QnA/" />
+    <link rel="prev" title="Complete ML workflow" href="../3.Notebook_ML_workflow/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Applied ML for Biological Data - Hands-on sessions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sessions descriptions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_Clustering/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow/">Complete Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.DeepVariant/">DeepVariant: Deep-learning tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.Notebook_PCA_n_Clustering_session/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Notebook_Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.Notebook_ML_workflow/">Complete ML workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Q &amp; A sessions</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unsupervised Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#q-a-session-principal-component-analysis-pca-and-k-means-clustering">Q &amp; A session: Principal component analysis (PCA) and K-means clustering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dimensionality-of-the-datasets">Dimensionality of the datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standardization">Standardization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-pca-transformation">Apply PCA transformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explained-variance-ratios">Explained variance ratios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-scree-plot">Generate scree plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpretation-and-analysis">Interpretation and Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression_QnA/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow_QnA/">Complete Machine Learning Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Applied ML for Biological Data - Hands-on sessions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Unsupervised Learning</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/1.PCA_n_clustering_QnA.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unsupervised-learning">
+<h1>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Link to this heading"></a></h1>
+<section id="q-a-session-principal-component-analysis-pca-and-k-means-clustering">
+<h2>Q &amp; A session: Principal component analysis (PCA) and K-means clustering<a class="headerlink" href="#q-a-session-principal-component-analysis-pca-and-k-means-clustering" title="Link to this heading"></a></h2>
+<div class="admonition-instructor-note instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Instructor note</p>
+<ul class="simple">
+<li><p>Participants were given 45-60 minutes to</p>
+<ul>
+<li><p>go through the Jupter notebook and</p></li>
+<li><p>select correct answers for the questions</p></li>
+</ul>
+</li>
+<li><p>Instructor narrate the answers and reasoning after the self-study time</p>
+<ul>
+<li><p>time: 30 minutes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="dimensionality-of-the-datasets">
+<h3>Dimensionality of the datasets<a class="headerlink" href="#dimensionality-of-the-datasets" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>You have a dataset with 50 columns (drug compounds) and 25 rows (patients). Is this dataset considered high-dimensional?</p>
+<ul class="simple">
+<li><p>A) No, because 50 columns is not a large number</p></li>
+<li><p>B) No, because the dataset is too small overall</p></li>
+<li><p>C) Yes, because there are more features (50) than samples (25)</p></li>
+<li><p>D) Yes, because 25 patients is insufficient for any analysis</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Why is your dataset with 50 drug compounds and 25 patients considered high-dimensional?</p>
+<ul class="simple">
+<li><p>A) Because 50 is the threshold for high-dimensionality</p></li>
+<li><p>B) Because the number of features (50) significantly exceeds the number of samples (25)</p></li>
+<li><p>C) Because drug compound data is inherently high-dimensional</p></li>
+<li><p>D) Because 25 patients represent too many medical conditions</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>In your dataset, the ratio of features to samples is 2:1 (50 features to 25 samples). This high-dimensional characteristic is most likely to cause:</p>
+<ul class="simple">
+<li><p>A) Faster model training due to more information per patient</p></li>
+<li><p>B) Better generalization because of the rich feature space</p></li>
+<li><p>C) The “curse of dimensionality” and potential overfitting issues</p></li>
+<li><p>D) Automatic feature selection by machine learning algorithms</p></li>
+</ul>
+</div>
+</section>
+<section id="standardization">
+<h3>Standardization<a class="headerlink" href="#standardization" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-1">
+<p class="admonition-title">Questions</p>
+<p><strong>Before (A) / After standardization plots (B):</strong></p>
+<p>A.
+<img alt="alt text" src="../_images/image-12.png" /></p>
+<p>B.
+<img alt="alt text" src="../_images/image-13.png" /></p>
+<p><strong>Question 1: Scale Uniformity After Standardization:</strong></p>
+<p>Comparing the original drug sensitivity scores (A) with the standardized versions (B), what is the most important change for PCA analysis?</p>
+<ul class="simple">
+<li><p>A) The standardized data has fewer outliers than the original data</p></li>
+<li><p>B) All drug compounds now have similar scales (roughly -3 to +3) instead of vastly different ranges</p></li>
+<li><p>C) The standardized data shows stronger correlations between compounds</p></li>
+<li><p>D) The standardized data has reduced the total number of features</p></li>
+</ul>
+<p><strong>Question 2: PCA Component Interpretation:</strong></p>
+<p>After standardization, all drug compounds now have approximately the same variance. How will this affect your PCA results compared to using the original unstandardized data?</p>
+<ul class="simple">
+<li><p>A) PC1 will still be dominated by the originally high-variance compounds like leptoporin B</p></li>
+<li><p>B) PCA components will now reflect actual biological/chemical relationships rather than just scale differences</p></li>
+<li><p>C) PCA will find fewer meaningful components due to the uniform scaling</p></li>
+<li><p>D) The explained variance percentages will be identical to the unstandardized analysis</p></li>
+</ul>
+<p><strong>Question 3: Practical PCA Decision:</strong></p>
+<p>You’re about to perform PCA for drug discovery research. Based on your standardization comparison, which approach would give you more interpretable principal components for identifying drug response patterns?</p>
+<ul class="simple">
+<li><p>A) Use original data because it preserves the natural measurement scales of each drug</p></li>
+<li><p>B) Use standardized data because it allows PCA to focus on underlying biological patterns rather than measurement scale artifacts</p></li>
+<li><p>C) It doesn’t matter - PCA will automatically handle scale differences</p></li>
+<li><p>D) Use original data because standardization removes important variance information</p></li>
+</ul>
+<p><strong>Question 4:  Variance Landscape:</strong></p>
+<p>Looking at your standardized data plot where all compounds now have similar variance, what does this mean for PCA’s search for “maximum variance directions”?</p>
+<ul class="simple">
+<li><p>A) PCA will no longer work because there’s no variance to capture</p></li>
+<li><p>B) PCA will now find directions based on correlations and biological patterns rather than being biased by high-variance features</p></li>
+<li><p>C) PCA will randomly select components since all variances are equal</p></li>
+<li><p>D) PCA will focus only on outlier detection</p></li>
+</ul>
+</div>
+</section>
+<section id="apply-pca-transformation">
+<h3>Apply PCA transformation<a class="headerlink" href="#apply-pca-transformation" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-2">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-14.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>Comparing the two heatmaps, what is the most significant difference between the correlation patterns of the original drug compounds (left) and the PCA components (right)?</p>
+<ul class="simple">
+<li><p>A) The PCA components show stronger correlations than the original compounds</p></li>
+<li><p>B) The original compounds are uncorrelated while PCA components are highly correlated</p></li>
+<li><p>C) The original compounds show various correlation patterns, while PCA components are essentially uncorrelated (orthogonal)</p></li>
+<li><p>D) Both heatmaps show identical correlation structures</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>In your PCA components heatmap (right), most correlations appear to be near zero (gray/white). This pattern demonstrates which fundamental property of PCA?</p>
+<ul class="simple">
+<li><p>A) PCA randomly shuffles the original correlations</p></li>
+<li><p>B) PCA creates principal components that are orthogonal (perpendicular) to each other, eliminating correlation</p></li>
+<li><p>C) PCA amplifies the strongest correlations from the original data</p></li>
+<li><p>D) PCA preserves all original correlation relationships between features</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>The original drug compounds heatmap shows clusters of correlated compounds (red blocks), while the PCA heatmap is predominantly gray. What does this tell you about what PCA has accomplished?</p>
+<ul class="simple">
+<li><p>A) PCA has lost important information about drug relationships</p></li>
+<li><p>B) PCA has transformed the correlated original features into a new set of uncorrelated components that still capture the data’s variance</p></li>
+<li><p>C) PCA has created random noise instead of meaningful components</p></li>
+<li><p>D) PCA has made the data analysis more complicated</p></li>
+</ul>
+</div>
+</section>
+<section id="explained-variance-ratios">
+<h3>Explained variance ratios<a class="headerlink" href="#explained-variance-ratios" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-3">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-15.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>Your plot shows that 10 principal components explain 95% of the total variance (red dashed line). For a machine learning application, which approach would be most appropriate?</p>
+<ul class="simple">
+<li><p>A) Always use all 25 components to avoid losing any information</p></li>
+<li><p>B) Use exactly 10 components because they reach the 95% threshold</p></li>
+<li><p>C) Use only PC1 since it explains the most variance (40%)</p></li>
+<li><p>D) Choose the number of components based on your specific analysis goals and computational constraints</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Examining the individual explained variance bars (blue), there’s a sharp drop after PC1 and PC2, then the contributions become much smaller. This pattern suggests:</p>
+<ul class="simple">
+<li><p>A) The first two components capture the main data structure, while next ffew components may represent minor patterns and last few components represent noise</p></li>
+<li><p>B) Only PC1 and PC2 are mathematically valid</p></li>
+<li><p>C) Components 3-25 contain no useful information</p></li>
+<li><p>D) This indicates an error in the PCA calculation</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>In the context of your drug sensitivity dataset, what does PC1’s 40% explained variance represent biologically?</p>
+<ul class="simple">
+<li><p>A) 40% of the drugs are important for the analysis</p></li>
+<li><p>B) The first principal component captures a major pattern of drug response variation across patients that accounts for 40% of the total variability</p></li>
+<li><p>C) 40% of the patients respond similarly to drugs</p></li>
+<li><p>D) 60% of the data is noise and should be discarded</p></li>
+</ul>
+</div>
+</section>
+<section id="generate-scree-plot">
+<h3>Generate scree plot<a class="headerlink" href="#generate-scree-plot" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-4">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-16.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>In your scree plot, the eigenvalues drop sharply from PC1 (~21) to PC2 (~9) to PC3 (~6), then gradually flatten out after PC6-7. What is the logic behind choosing the number of components at the “elbow” point where the curve starts to flatten?</p>
+<ul class="simple">
+<li><p>A) Components after the elbow contain no mathematical information</p></li>
+<li><p>B) Components before the elbow capture major data patterns, while those after the elbow likely represent noise or minor variations</p></li>
+<li><p>C) The elbow point is randomly determined and has no statistical meaning</p></li>
+<li><p>D) You should always choose exactly at the steepest drop point</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Looking at your scree plot, why do we typically avoid including principal components from the flat region (PC8 onwards, where eigenvalues are close to 0)?</p>
+<ul class="simple">
+<li><p>A) These components are mathematically incorrect and will cause errors</p></li>
+<li><p>B) These components represent very small amounts of variance and may capture noise rather than meaningful signal</p></li>
+<li><p>C) These components take too much computational time to calculate</p></li>
+<li><p>D) These components are always highly correlated with the first few components</p></li>
+</ul>
+</div>
+</section>
+<section id="interpretation-and-analysis">
+<h3>Interpretation and Analysis<a class="headerlink" href="#interpretation-and-analysis" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-5">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-17.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>In this PCA loadings heatmap, some drug compounds show dark red or dark blue colors while others appear white/gray. What do these color intensities tell you about each compound’s contribution to the principal components?</p>
+<ul class="simple">
+<li><p>A) Dark colors indicate drugs that are more effective therapeutically</p></li>
+<li><p>B) Dark red/blue indicate high absolute loading values, meaning these compounds strongly contribute to defining that principal component</p></li>
+<li><p>C) White/gray areas indicate missing data for those drug compounds</p></li>
+<li><p>D) Color intensity represents the correlation between different drugs</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Looking at PC1 (top row), you can see both red (positive) and blue (negative) loadings for different drug compounds. What does this pattern of positive and negative loadings indicate?</p>
+<ul class="simple">
+<li><p>A) Positive loadings are “good” drugs and negative loadings are “bad” drugs</p></li>
+<li><p>B) This indicates an error in the PCA calculation since all loadings should be positive</p></li>
+<li><p>C) Compounds with positive loadings move in the same direction as PC1, while those with negative loadings move in the opposite direction</p></li>
+<li><p>D) Positive and negative loadings cancel each other out, making PC1 meaningless</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>To understand what PC1 represents biologically in your drug sensitivity study, which compounds should you focus on for interpretation?</p>
+<ul class="simple">
+<li><p>A) Only the compounds with positive loadings (red colors)</p></li>
+<li><p>B) Only the compounds with negative loadings (blue colors)</p></li>
+<li><p>C) The compounds with the highest absolute loadings (darker shades of red and blue), regardless of sign</p></li>
+<li><p>D) The compounds with near-zero loadings (white/gray) because they’re most stable</p></li>
+</ul>
+<p><strong>Question 4:</strong></p>
+<p>If you wanted to name or characterize what biological pathway PC1 represents, how would you use the loading information?</p>
+<ul class="simple">
+<li><p>A) Look up the biological functions of compounds with the highest absolute loadings in PC1</p></li>
+<li><p>B) Only consider the single compound with the highest positive loading</p></li>
+<li><p>C) Average all the loading values to get a general interpretation</p></li>
+<li><p>D) Focus on compounds that appear in multiple principal components</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../3.Notebook_ML_workflow/" class="btn btn-neutral float-left" title="Complete ML workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../2.Logistic_regression_QnA/" class="btn btn-neutral float-right" title="Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Norwegian Ai Cloud.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

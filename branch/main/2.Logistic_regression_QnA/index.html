@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classification &mdash; Applied ML for Biological Data - Hands-on sessions  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Complete Machine Learning Workflow" href="../3.ML_workflow_QnA/" />
+    <link rel="prev" title="Unsupervised Learning" href="../1.PCA_n_clustering_QnA/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Applied ML for Biological Data - Hands-on sessions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sessions descriptions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_Clustering/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow/">Complete Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.DeepVariant/">DeepVariant: Deep-learning tool</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.Notebook_PCA_n_Clustering_session/">Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.Notebook_Logistic_regression/">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.Notebook_ML_workflow/">Complete ML workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Q &amp; A sessions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.PCA_n_clustering_QnA/">Unsupervised Learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#q-a-session-logistic-regression">Q &amp; A session: Logistic regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-biological-context-ml-use-case">Understanding biological context (ML-use case)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-data-distributions">Visualize data distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#split-original-dataset">Split original dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-model-output-probability">The Model Output (Probability)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict-test-datasaets">Predict test-datasaets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examine-and-understand-the-importance-of-features-in-predicting-classes">Examine and understand the importance of features in predicting classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-of-the-model-performance">Evaluation of the model performance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3.ML_workflow_QnA/">Complete Machine Learning Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Applied ML for Biological Data - Hands-on sessions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Classification</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/content/blob/main/content/2.Logistic_regression_QnA.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="classification">
+<h1>Classification<a class="headerlink" href="#classification" title="Link to this heading"></a></h1>
+<section id="q-a-session-logistic-regression">
+<h2>Q &amp; A session: Logistic regression<a class="headerlink" href="#q-a-session-logistic-regression" title="Link to this heading"></a></h2>
+<div class="admonition-instructor-note instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Instructor note</p>
+<ul class="simple">
+<li><p>Participants were given 30 minutes to</p>
+<ul>
+<li><p>go through the Jupter notebook and</p></li>
+<li><p>select correct answers for the questions</p></li>
+</ul>
+</li>
+<li><p>Instructor narrate the answers and reasoning after the self-study time</p>
+<ul>
+<li><p>time: 30 minutes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="understanding-biological-context-ml-use-case">
+<h3>Understanding biological context (ML-use case)<a class="headerlink" href="#understanding-biological-context-ml-use-case" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>What type of machine learning problem is glioma grading/classification as described in this tutorial?</p>
+<ul class="simple">
+<li><p>A) Unsupervised clustering problem</p></li>
+<li><p>B) Binary classification problem</p></li>
+<li><p>C) Multi-class classification problem</p></li>
+<li><p>D) Regression problem</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>In this study, how is the target variable encoded?</p>
+<ul class="simple">
+<li><p>A) LGG = 1, GBM = 0</p></li>
+<li><p>B) LGG = 0, GBM = 1</p></li>
+<li><p>C) Both are encoded as 1</p></li>
+<li><p>D) Text labels are used without numeric encoding
+Answer: - B) LGG = 0, GBM = 1
+Explanation: The target variable encoding is explicitly stated as 0 = “LGG” and 1 = “GBM”.</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>What types of features are being used in this logistic regression model?</p>
+<ul class="simple">
+<li><p>A) Only genetic mutation data</p></li>
+<li><p>B) Only clinical features</p></li>
+<li><p>C) 20 most frequently mutated genes plus 3 clinical features</p></li>
+<li><p>D) All available genetic and clinical data</p></li>
+</ul>
+<p><strong>Question 4:</strong></p>
+<p>Why is accurate glioma grading/classification clinically important?</p>
+<ul class="simple">
+<li><p>A) It determines the research funding allocation</p></li>
+<li><p>B) Different grades require different treatment approaches and have different prognoses</p></li>
+<li><p>C) It’s only important for statistical purposes</p></li>
+<li><p>D) It helps organize hospital records</p></li>
+</ul>
+</div>
+</section>
+<section id="visualize-data-distributions">
+<h3>Visualize data distributions<a class="headerlink" href="#visualize-data-distributions" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-1">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-18.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>Binary features (keeping them as 0/1) while scaling Age_at_diagnosis. What is the primary reason why scaling binary features is generally NOT recommended in logistic regression?</p>
+<ul class="simple">
+<li><p>A) Binary features are too simple to benefit from scaling</p></li>
+<li><p>B) Scaling binary features would destroy their natural interpretability - coefficients would no longer represent the change from “absent” (0) to “present” (1)</p></li>
+<li><p>C) Binary features automatically have equal variance, so scaling is unnecessary</p></li>
+<li><p>D) Logistic regression algorithms cannot handle scaled binary features</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>Given the heavy imbalance in most binary features (with most values being 0 and small number of observations with 1s’), what potential issue might this create during logistic regression training?</p>
+<ul class="simple">
+<li><p>A) The model will converge faster due to the simplicity of the data</p></li>
+<li><p>B) The model may have difficulty learning meaningful patterns from rare events (1s) and might be biased toward predicting the majority class</p></li>
+<li><p>C) The imbalanced features will automatically be weighted equally by the algorithm</p></li>
+</ul>
+<p><strong>Question 3:</strong></p>
+<p>When interpreting logistic regression coefficients for the heavily imbalanced binary features shown in these plots, what should you be particularly cautious about?</p>
+<ul class="simple">
+<li><p>A) Coefficients for rare events may be unstable and can lead to poor generalization</p></li>
+<li><p>B) Coefficients will be automatically adjusted by the algorithm to account for imbalance</p></li>
+<li><p>C) Imbalanced features always produce more reliable coefficient estimates</p></li>
+<li><p>D) The scaling of Age_at_diagnosis will make other coefficients uninterpretable</p></li>
+</ul>
+</div>
+</section>
+<section id="split-original-dataset">
+<h3>Split original dataset<a class="headerlink" href="#split-original-dataset" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-2">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> code, <code class="docutils literal notranslate"><span class="pre">test_size=0.3</span></code> means 30% of data goes to testing. For a medical dataset like glioma classification, what is the primary consideration when choosing this split ratio?</p>
+<p><img alt="alt text" src="../_images/image-19.png" /></p>
+<ul class="simple">
+<li><p>A) Larger test sets always give better model performance</p></li>
+<li><p>B) Balancing reliable performance evaluation with sufficient training data, especially important given limited medical data availability</p></li>
+<li><p>C) Test size should always be exactly 30% regardless of dataset characteristics</p></li>
+<li><p>D) Smaller test sets are always preferred to maximize training data</p></li>
+</ul>
+<p><strong>Question 2:</strong></p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> code, why is the <code class="docutils literal notranslate"><span class="pre">stratify=gliomas[&quot;Grade&quot;]</span></code> parameter crucial in this glioma classification problem?</p>
+<ul class="simple">
+<li><p>A) It randomly shuffles the data for better performance</p></li>
+<li><p>B) It ensures both training and test sets have proportional representation of LGG and GBM cases</p></li>
+<li><p>C) It sorts the data by grade for easier processing</p></li>
+<li><p>D) It removes outliers from the dataset</p></li>
+</ul>
+</div>
+</section>
+<section id="the-model-output-probability">
+<h3>The Model Output (Probability)<a class="headerlink" href="#the-model-output-probability" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-3">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-20.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>The histogram shows a distinctive U-shaped distribution of predicted probabilities, with many predictions clustered near 0.0 and 1.0, and fewer predictions in the middle range (0.3-0.7). What does this pattern indicate about the model’s behavior?</p>
+<ul class="simple">
+<li><p>A) The model is making unreliable predictions</p></li>
+<li><p>B) The model is well-calibrated and confident in most of its predictions, clearly separating the two classes</p></li>
+<li><p>C) The model has failed to converge properly during training</p></li>
+<li><p>D) The sigmoid transformation is not working correctly</p></li>
+</ul>
+<p><strong>Question 2:</strong>
+What does lr.predict_proba(X_test) output, and why are probability predictions particularly valuable in medical diagnosis like glioma classification?</p>
+<ul class="simple">
+<li><p>A) It outputs only the predicted class labels (0 for LGG, 1 for GBM)</p></li>
+<li><p>B) It outputs probability estimates for each class (P(LGG) and P(GBM)) for each patient, allowing clinicians to assess prediction confidence</p></li>
+<li><p>C) It outputs the raw coefficient values for each gene and clinical feature</p></li>
+<li><p>D) It outputs the training accuracy of the model</p></li>
+</ul>
+</div>
+</section>
+<section id="predict-test-datasaets">
+<h3>Predict test-datasaets<a class="headerlink" href="#predict-test-datasaets" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-4">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1:</strong></p>
+<p>What is the key difference between <code class="docutils literal notranslate"><span class="pre">lr.predict(X_test)</span></code> and lr.predict_proba(X_test) in this glioma classification model?</p>
+<ul class="simple">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">predict()</span> </code>gives probabilities for each class, while <code class="docutils literal notranslate"><span class="pre">predict_proba()</span></code> gives final class labels</p></li>
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">predict()</span></code> gives final class decisions (0 for LGG, 1 for GBM) by applying a 0.5 threshold to probabilities, while <code class="docutils literal notranslate"><span class="pre">predict_proba()</span></code> gives the actual probability values</p></li>
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">predict()</span></code> is more accurate than <code class="docutils literal notranslate"><span class="pre">predict_proba()</span></code></p></li>
+<li><p>D) There is no difference between the two methods</p></li>
+</ul>
+</div>
+</section>
+<section id="examine-and-understand-the-importance-of-features-in-predicting-classes">
+<h3>Examine and understand the importance of features in predicting classes<a class="headerlink" href="#examine-and-understand-the-importance-of-features-in-predicting-classes" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-5">
+<p class="admonition-title">Questions</p>
+<p><strong>Question 1 (Coefficient Sign Interpretation):</strong></p>
+<p>In this glioma classification model, what does a positive coefficient in <code class="docutils literal notranslate"><span class="pre">lr.coef_</span></code> indicate for a specific gene or clinical feature?</p>
+<ul class="simple">
+<li><p>A) The feature has no effect on glioma classification</p></li>
+<li><p>B) The feature increases the likelihood of predicting GBM (class 1) when present or higher in value</p></li>
+<li><p>C) The feature increases the likelihood of predicting LGG (class 0) when present or higher in value</p></li>
+<li><p>D) The feature should be removed from the model</p></li>
+</ul>
+<p><img alt="alt text" src="../_images/image-21.png" /></p>
+<p><strong>Question 2 (Coefficient Sign Interpretation):</strong></p>
+<p>Looking at the feature importance plot, what can you conclude about the features GRIN2A (rightmost bar) and IDH1 (leftmost bar) in terms of their effect on the predicted outcome?</p>
+<ul class="simple">
+<li><p>A) GRIN2A decreases the probability of the positive class, while IDH1 increases it</p></li>
+<li><p>B) GRIN2A increases the probability of the positive class, while IDH1 decreases it</p></li>
+<li><p>C) Both features have the same effect but different magnitudes</p></li>
+<li><p>D) The sign of the coefficient doesn’t matter, only the magnitude</p></li>
+</ul>
+</div>
+</section>
+<section id="evaluation-of-the-model-performance">
+<h3>Evaluation of the model performance<a class="headerlink" href="#evaluation-of-the-model-performance" title="Link to this heading"></a></h3>
+<div class="admonition-questions questions admonition" id="questions-6">
+<p class="admonition-title">Questions</p>
+<p><img alt="alt text" src="../_images/image-22.png" /></p>
+<p><strong>Question 1:</strong></p>
+<p>Based on the confusion matrix shown, what are the True Positives, False Positives, True Negatives, and False Negatives for this glioma classification model?</p>
+<ul class="simple">
+<li><p>A) TP=124, FP=22, TN=94, FN=12</p></li>
+<li><p>B) TP=94, FP=22, TN=124, FN=12</p></li>
+<li><p>C) TP=22, FP=94, TN=12, FN=124</p></li>
+<li><p>D) TP=94, FP=12, TN=124, FN=22</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../1.PCA_n_clustering_QnA/" class="btn btn-neutral float-left" title="Unsupervised Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../3.ML_workflow_QnA/" class="btn btn-neutral float-right" title="Complete Machine Learning Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Norwegian Ai Cloud.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
