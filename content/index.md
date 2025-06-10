@@ -37,6 +37,15 @@
 3.Notebook_ML_workflow.ipynb
 ```
 
+```{toctree}
+:caption: Q & A sessions
+:maxdepth: 1
+
+1.PCA_n_clustering_QnA.md
+2.Logistic_regression_QnA.md
+3.ML_workflow_QnA.md
+```
+
 ## Python dependencies
 
 * [Download requirements file `requirements.txt`](test_data/requirements.txt)
